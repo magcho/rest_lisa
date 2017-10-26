@@ -5,8 +5,17 @@
  */
 function rest_lisa(){
   $city_name = ["横浜市","川崎市","平塚市","藤沢市","茅ヶ崎市","大和市","海老名市","座間市","綾瀬市","寒川町","大磯町","二宮町","横須賀市","鎌倉市","逗子市","三浦市","葉山町","相模原市","秦野市","厚木市","伊勢原市","愛川町","清川村","南足柄市","中井町","大井町","松田町","山北町","開成町","小田原市","箱根町","真鶴町","湯河原町"];
+  /**
+    * $html = file_get_contents('http://www.jma.go.jp/jp/warn/320_table.html');
+    */
+  $url = 'http://www.jma.go.jp/jp/warn/320_table.html';
+  $ch = curl_init(); // 初期化
+  curl_setopt( $ch, CURLOPT_URL, $url );
+  curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true ); // 出力内容を受け取る設定
+  $html = curl_exec( $ch ); // データの取得
 
-  $html = file_get_contents('http://www.jma.go.jp/jp/warn/320_table.html');
+
+  
   preg_match('/<table id=\'WarnTableTable\'>(.*)<\/table>/',$html,$match);
 
   // やけくそだ
