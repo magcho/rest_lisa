@@ -1,5 +1,6 @@
 <?php
 header('content-type: application/json; charset=utf-8');
+chdir('./../../');
 require_once('./lib.php');
 function printJson($json){
   print json_encode($json,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT );
